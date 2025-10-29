@@ -1,3 +1,2 @@
-web: gunicorn core.wsgi:application --log-file -
-release: python manage.py migrate
-worker: python manage.py refresh_countries
+web: gunicorn core.wsgi:application --log-file - --access-logfile - --workers 4
+release: python manage.py migrate && python manage.py collectstatic --noinput
